@@ -5,7 +5,7 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './layout/layout'
 import { Todos } from './pages/Todos'
-import Weather from './pages/weather'
+import Weather from './pages/Weather'
 
 function App() {
   // const [count, setCount] = useState(0);
