@@ -66,7 +66,8 @@ export const WeatherApp = () => {
 
     return (
         <div>
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-200 to-purple-300 p-4">
+            {/* <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-200 to-purple-300 p-4"> */}
+            <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
                 <div className="bg-white shadow-xl rounded-xl w-full max-w-xl p-6">
                     <form
                         onSubmit={(e) => {

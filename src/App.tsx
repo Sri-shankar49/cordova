@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './layout/layout'
 import { Todos } from './pages/Todos'
 import Weather from './pages/Weather'
+import { Dashboard } from './pages/Dashboard'
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -37,7 +38,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Weather />} /> {/* 👈 Renders at /app/ */}
+            <Route path="/" element={<Dashboard />} /> {/* 👈 Renders at /app/ */}
+            <Route path="/Weather" element={<Weather />} /> {/* 👈 Renders at /app/ */}
             <Route path="/Todos" element={<Todos />} /> {/* 👈 Renders at /app/ */}
           </Route>
         </Routes>
