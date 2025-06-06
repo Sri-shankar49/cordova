@@ -8,7 +8,7 @@ The Weather & To-Do App is a simple and efficient web application built with Rea
 
 ## Live Link
 
-[Live Demo](https://your-live-app-link.vercel.app/) <!-- Replace with your live app URL -->
+[Live Demo](https://cordova-theta.vercel.app/) <!-- Replace with your live app URL -->
 
 ## 🌟 Features
 
@@ -40,7 +40,7 @@ The Weather & To-Do App is a simple and efficient web application built with Rea
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/danielace1/expense-tracker-app.git
+git clone https://github.com/Sri-shankar49/cordova.git
 ```
 
 2. Install dependencies:
