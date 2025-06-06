@@ -17,16 +17,16 @@ export const SideBar: React.FC<SideBarProps> = ({ closeSidebar }) => {
     return (
         <div>
             <div className="">
-                <div className="relative w-80 h-screen bg-white px-10 py-10">
+                <div className="relative w-80 h-screen bg-indigo-50 px-10 py-10">
 
                     <div className="flex items-center space-x-2">
-                        <TbLayoutDashboardFilled className='text-4xl text-[#d2f55c]' />
-                        <h1 className='font-semibold'>React Application</h1>
+                        <TbLayoutDashboardFilled className='text-4xl text-gray-700' />
+                        <h1 className='font-semibold text-black'>React Application</h1>
                     </div>
 
                     {/* Close Button */}
                     <div className="absolute top-5 right-5 transition-transform duration-300 hover:rotate-90">
-                        <IoClose onClick={closeSidebar} className="text-[35px] text-mindfulGrey cursor-pointer hover:text-main " />
+                        <IoClose onClick={closeSidebar} className="text-[35px] text-black cursor-pointer hover:text-main " />
                     </div>
 
 
@@ -39,8 +39,8 @@ export const SideBar: React.FC<SideBarProps> = ({ closeSidebar }) => {
                                 aria-current="page"
                             >
                                 <div className='flex items-center'>
-                                    <RxDashboard className='text-lg ' />
-                                    <li className="w-full border-b border-mindfulLightGrey text-[16px] font-semibold px-2 py-3 hover:text-[#cad2ff]">
+                                    <RxDashboard className='text-lg text-indigo-500' />
+                                    <li className="w-full border-b border-mindfulLightGrey text-[16px] text-indigo-700 font-semibold px-2 py-3 hover:text-indigo-500">
                                         Dashboard
                                     </li>
                                 </div>
@@ -53,10 +53,10 @@ export const SideBar: React.FC<SideBarProps> = ({ closeSidebar }) => {
                                 aria-current="page"
                             >
                                 <div className='flex items-center'>
-                                    <TiWeatherPartlySunny className='text-lg' />
+                                    <TiWeatherPartlySunny className='text-lg text-indigo-500' />
                                     <li
                                         onClick={closeSidebar}
-                                        className="w-full border-b border-mindfulLightGrey text-[16px] text-mindfulBlack font-semibold px-2 py-2 cursor-pointer hover:text-main hover:text-[#cad2ff]">
+                                        className="w-full border-b border-mindfulLightGrey text-[16px] text-indigo-700 font-semibold px-2 py-2 cursor-pointer hover:text-main hover:text-indigo-500">
                                         Weather App
                                     </li>
                                 </div>
@@ -68,10 +68,10 @@ export const SideBar: React.FC<SideBarProps> = ({ closeSidebar }) => {
                                 aria-current="page"
                             >
                                 <div className='flex items-center'>
-                                    <FaListOl className='text-lg' />
+                                    <FaListOl className='text-lg text-indigo-500' />
                                     <li
                                         onClick={closeSidebar}
-                                        className="w-full border-b border-mindfulLightGrey text-[16px] text-mindfulBlack font-semibold px-2 py-2 cursor-pointer hover:text-main hover:text-[#cad2ff]">
+                                        className="w-full border-b border-mindfulLightGrey text-[16px] text-indigo-700 font-semibold px-2 py-2 cursor-pointer hover:text-main hover:text-indigo-500">
                                         To do List
                                     </li>
                                 </div>
@@ -83,10 +83,10 @@ export const SideBar: React.FC<SideBarProps> = ({ closeSidebar }) => {
                                 aria-current="page"
                             >
                                 <div className='flex items-center'>
-                                    <SiGoogleanalytics className='text-lg' />
+                                    <SiGoogleanalytics className='text-lg text-indigo-500' />
                                     <li
                                         onClick={closeSidebar}
-                                        className="w-full border-b border-mindfulLightGrey text-[16px] font-semibold px-2 py-3 hover:text-[#cad2ff]">
+                                        className="w-full border-b border-mindfulLightGrey text-[16px] text-indigo-700 font-semibold px-2 py-3 hover:text-indigo-500">
                                         Analytics
                                     </li>
                                 </div>
@@ -98,10 +98,10 @@ export const SideBar: React.FC<SideBarProps> = ({ closeSidebar }) => {
                                 aria-current="page"
                             >
                                 <div className='flex items-center'>
-                                    <FaHome className='text-lg' />
+                                    <FaHome className='text-lg text-indigo-500' />
                                     <li
                                         onClick={closeSidebar}
-                                        className="w-full border-b border-mindfulLightGrey text-[16px] font-semibold px-2 py-3 hover:text-[#cad2ff]">Home</li>
+                                        className="w-full border-b border-mindfulLightGrey text-[16px] text-indigo-700 font-semibold px-2 py-3 hover:text-indigo-500">Home</li>
                                 </div>
                             </NavLink>
 
@@ -111,10 +111,10 @@ export const SideBar: React.FC<SideBarProps> = ({ closeSidebar }) => {
                                 aria-current="page"
                             >
                                 <div className='flex items-center'>
-                                    <FaTasks className='text-lg' />
+                                    <FaTasks className='text-lg text-indigo-500' />
                                     <li
                                         onClick={closeSidebar}
-                                        className="w-full border-b border-mindfulLightGrey text-[16px] font-semibold px-2 py-3 hover:text-[#cad2ff]">
+                                        className="w-full border-b border-mindfulLightGrey text-[16px] text-indigo-700 font-semibold px-2 py-3 hover:text-indigo-500">
                                         Tasks
                                     </li>
                                 </div>
@@ -126,10 +126,10 @@ export const SideBar: React.FC<SideBarProps> = ({ closeSidebar }) => {
                                 aria-current="page"
                             >
                                 <div className='flex items-center'>
-                                    <FiSettings className='text-lg' />
+                                    <FiSettings className='text-lg text-indigo-500' />
                                     <li
                                         onClick={closeSidebar}
-                                        className="w-full border-b border-mindfulLightGrey text-[16px] font-semibold px-2 py-3 hover:text-[#cad2ff]">Settings</li>
+                                        className="w-full border-b border-mindfulLightGrey text-[16px] text-indigo-700 font-semibold px-2 py-3 hover:text-indigo-500">Settings</li>
                                 </div>
                             </NavLink>
                         </ul>

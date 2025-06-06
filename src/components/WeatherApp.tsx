@@ -37,6 +37,7 @@ export const WeatherApp = () => {
             );
             setWeatherData(response.data);
         } catch (err: any) {
+            console.error(err.message);
             setError("No data found for the entered city.");
         } finally {
             setLoading(false);

@@ -10,7 +10,7 @@ const DashboardComp = () => {
                 {/* Current Weather */}
                 <a href="/Weather">
                     <div
-                        className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 cursor-pointer hover:bg-[#d2f55c]"
+                        className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 cursor-pointer hover:bg-indigo-200"
                         title="Click here to go to Weather-App"
                     >
                         <FaCloudSun className="text-yellow-500 text-3xl" />
@@ -28,7 +28,7 @@ const DashboardComp = () => {
                 <a href="/Todos">
                     <div
                         title="Click here to go to TODO-App"
-                        className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-[#d2f55c] cursor-pointer"
+                        className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-indigo-200 cursor-pointer"
                     >
                         <FaListAlt className="text-blue-500 text-3xl" />
                         <div>
@@ -42,7 +42,7 @@ const DashboardComp = () => {
                 </a>
 
                 {/* Completed Tasks */}
-                <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-[#d2f55c] cursor-pointer">
+                <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-indigo-200 cursor-pointer">
                     <FaCheckCircle className="text-green-500 text-3xl" />
                     <div>
                         <p className="text-gray-600">Completed</p>
@@ -51,7 +51,7 @@ const DashboardComp = () => {
                 </div>
 
                 {/* Pending Tasks */}
-                <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-[#d2f55c] cursor-pointer">
+                <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-indigo-200 cursor-pointer">
                     <FaClock className="text-red-500 text-3xl" />
                     <div>
                         <p className="text-gray-600">Pending</p>
@@ -60,7 +60,7 @@ const DashboardComp = () => {
                 </div>
 
                 {/* Today's Tasks */}
-                <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-[#d2f55c] cursor-pointer">
+                <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-indigo-200 cursor-pointer">
                     <FaCalendarAlt className="text-purple-500 text-3xl" />
                     <div>
                         <p className="text-gray-600">Today's Tasks</p>
@@ -69,7 +69,7 @@ const DashboardComp = () => {
                 </div>
 
                 {/* Upcoming Tasks */}
-                <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-[#d2f55c] cursor-pointer">
+                <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-indigo-200 cursor-pointer">
                     <FaClipboardList className="text-indigo-500 text-3xl" />
                     <div>
                         <p className="text-gray-600">Upcoming</p>
@@ -78,7 +78,7 @@ const DashboardComp = () => {
                 </div>
 
                 {/* Productivity Score (Example) */}
-                <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-[#d2f55c] cursor-pointer">
+                <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4 hover:bg-indigo-200 cursor-pointer">
                     <FaRegSmile className="text-pink-500 text-3xl" />
                     <div>
                         <p className="text-gray-600">Productivity Score</p>
