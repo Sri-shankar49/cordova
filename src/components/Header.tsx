@@ -22,40 +22,47 @@ export const Header = () => {
                 <div className='flex items-center justify-between'>
                     <div className="flex items-center space-x-5">
                         <IoMenu onClick={toggleHamButton} className="text-white text-3xl cursor-pointer" title="Menu" />
-                        <a href="/" className="text-xl text-slate-100 font-semibold">React Weather & To Do App</a>
+                        <a href="/" className="text-xl text-slate-100 font-semibold">React Application</a>
                     </div>
 
                     {/* Search Bar & icons */}
-                    <div className="flex items-center space-x-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+
                         {/* Search Bar */}
-                        <div className="w-72 relative bg-[#f3f3f3] rounded-lg pl-7 py-1.5">
-                            <input type="text" placeholder="Search" className="text-md focus-within:outline-none" />
-                            <IoIosSearch className="absolute text-gray-400 text-xl top-2 left-1.5" />
+                        <div className="relative bg-[#f3f3f3] rounded-lg pl-8 py-1.5 w-full sm:w-72">
+                            <input
+                                type="text"
+                                placeholder="Search"
+                                className="text-md w-full bg-transparent focus:outline-none"
+                            />
+                            <IoIosSearch className="absolute text-gray-400 text-xl top-2 left-2" />
                         </div>
 
-                        {/* Message */}
-                        <div>
+                        {/* Icons Section */}
+                        <div className="flex items-center justify-between sm:justify-start gap-4">
+
+                            {/* Message */}
                             <LuMessageCircleMore className="text-2xl text-white cursor-pointer" />
-                        </div>
 
-                        {/* Bell Icon */}
-                        <div className="relative">
-                            <FaRegBell className="text-2xl text-white cursor-pointer" />
-                            <span className="text-[10px] p-1 w-3 h-3 flex justify-center items-center absolute bg-red-600 text-white rounded-full top-[-3px] right-[-2px]">2</span>
-                        </div>
-
-                        {/* User */}
-                        <div className="flex items-center space-x-2">
-                            <div>
-                                <FaRegUserCircle className="text-2xl text-white cursor-pointer" />
+                            {/* Bell Icon */}
+                            <div className="relative">
+                                <FaRegBell className="text-2xl text-white cursor-pointer" />
+                                <span className="text-[10px] p-1 w-3 h-3 flex justify-center items-center absolute bg-red-600 text-white rounded-full top-[-3px] right-[-2px]">
+                                    2
+                                </span>
                             </div>
 
-                            <div>
-                                <h5 className="text-xs text-white">Welcome,</h5>
-                                <p className="text-xs text-white font-semibold">Guest User</p>
+                            {/* User Info */}
+                            <div className="flex items-center space-x-2">
+                                <FaRegUserCircle className="text-2xl text-white cursor-pointer" />
+                                <div className="hidden sm:block">
+                                    <h5 className="text-xs text-white">Welcome,</h5>
+                                    <p className="text-xs text-white font-semibold">Guest User</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
 
 
                     {/* Overlay */}

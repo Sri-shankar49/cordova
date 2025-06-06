@@ -79,7 +79,7 @@ export const WeatherApp = () => {
                         <div className="relative mb-6">
                             <input
                                 type="text"
-                                placeholder="Enter city name"
+                                placeholder="Enter city name & click search"
                                 value={city}
                                 onChange={(e) => setCity(e.target.value)}
                                 className="w-full px-5 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"

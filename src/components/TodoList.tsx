@@ -3,7 +3,6 @@ import axios from 'axios';
 import {
     setTodos,
     addTodo,
-    updateTodo,
     deleteTodo,
     toggleComplete,
     setLoading,
@@ -11,32 +10,40 @@ import {
 } from '../redux/todosSlice';
 import type { RootState } from '../redux/store';
 import { useDispatch, useSelector } from 'react-redux';
+import { MdDeleteForever } from "react-icons/md";
 
 
 const API_URL = 'https://jsonplaceholder.typicode.com/todos';
 
+const LOCAL_STORAGE_KEY = 'todos_data';
+
 const TodoList = () => {
 
+    // Dispatch Hook from Redux
     const dispatch = useDispatch();
     const { items: todos, loading, error } = useSelector((state: RootState) => state.todos);
     const [newTask, setNewTask] = useState('');
-    const [editTodo, setEditTodo] = useState<number | null>(null);
 
+    // Storing in local storage
     useEffect(() => {
-        if (todos.length === 0) {
-            fetchTodos();
+        const savedTodos = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (savedTodos) {
+            dispatch(setTodos(JSON.parse(savedTodos)));
         } else {
-            console.log("Loaded todos count:", todos.length); // Should be 200
+            fetchTodos();
         }
     }, []);
 
-    // GET Method 
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+    }, [todos]);
+
+    // GET data from the API
     const fetchTodos = async () => {
         dispatch(setLoading(true));
         dispatch(setError(null));
         try {
-            // ?_limit=5
-            const response = await axios.get(`${API_URL}`);
+            const response = await axios.get(API_URL);
             dispatch(setTodos(response.data));
         } catch (err: any) {
             dispatch(setError(err.message || 'Failed to fetch todos'));
@@ -45,73 +52,42 @@ const TodoList = () => {
         }
     };
 
-    // CREATE & UPDATE Method 
+    // POST Method, ADD
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!newTask.trim()) return;
 
+        const newId = Math.max(0, ...todos.map((t) => t.id || 0)) + 1;
+        const newTodo = {
+            id: newId,
+            title: newTask,
+            completed: false,
+            userId: 1,
+        };
+
         dispatch(setLoading(true));
         dispatch(setError(null));
-
         try {
-            if (editTodo !== null) {
-                const updatedTodo = { id: editTodo, title: newTask, completed: false };
-                await axios.put(`${API_URL}/${editTodo}`, updatedTodo);
-                dispatch(updateTodo(updatedTodo));
-                setEditTodo(null);
-            } else {
-                const newId = Math.max(0, ...todos.map((t) => t.id)) + 1;
-                const newTodo = { id: newId, title: newTask, completed: false };
-                await axios.post(API_URL, newTodo);
-                dispatch(addTodo(newTodo));
-            }
+            await axios.post('https://jsonplaceholder.typicode.com/todos', newTodo);
+            dispatch(addTodo(newTodo));
             setNewTask('');
         } catch (err: any) {
-            dispatch(setError(err.message || 'Failed to submit task'));
+            dispatch(setError(err.message || 'Failed to add task'));
         } finally {
             dispatch(setLoading(false));
         }
     };
 
-    // MARK TODO
-    const handleToggleComplete = async (id: number) => {
-        const todo = todos.find((t: { id: number; }) => t.id === id);
-        if (!todo) return;
-
-        dispatch(setLoading(true));
-        dispatch(setError(null));
-
-        try {
-            const updatedTodo = { ...todo, completed: !todo.completed };
-            await axios.put(`${API_URL}/${id}`, updatedTodo);
-            dispatch(toggleComplete(id));
-        } catch (err: any) {
-            dispatch(setError(err.message || 'Failed to update todo'));
-        } finally {
-            dispatch(setLoading(false));
-        }
+    // Complete TODOS Strike through function
+    const handleToggleComplete = (id: number) => {
+        dispatch(toggleComplete(id));
     };
 
-    // DELETE Method
-    const handleDelete = async (id: number) => {
-        dispatch(setLoading(true));
-        dispatch(setError(null));
-
-        try {
-            await axios.delete(`${API_URL}/${id}`);
-            dispatch(deleteTodo(id));
-        } catch (err: any) {
-            dispatch(setError(err.message || 'Failed to delete todo'));
-        } finally {
-            dispatch(setLoading(false));
-        }
+    // Delete Functionality
+    const handleDelete = (id: number) => {
+        dispatch(deleteTodo(id));
     };
 
-    // Edit Functionality
-    const startEdit = (id: number, title: string) => {
-        setNewTask(title);
-        setEditTodo(id);
-    };
 
 
     return (
@@ -130,23 +106,16 @@ const TodoList = () => {
                         />
                         <button
                             type="submit"
-                            className={`${editTodo ? "bg-yellow-600 hover:bg-yellow-700" : "bg-blue-600 hover:bg-blue-700"
-                                } text-white px-4 py-2 rounded-lg cursor-pointer`}
-                        >{editTodo !== null ? 'Update' : 'Add'}</button>
+                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg cursor-pointer"
+                        >
+                            Add
+                        </button>
                     </form>
-
 
                     {loading && <p className="text-center text-sm text-gray-500">Loading...</p>}
                     {error && <p className="text-center text-red-500 text-sm mb-2">{error}</p>}
 
-                    {/* Example of a task list */}
                     <ul className="space-y-2">
-                        {/* <li className="flex items-center justify-between bg-gray-50 p-3 rounded-lg shadow-sm">
-                            <span className="text-gray-700">Sample Task</span>
-                            <button className="text-red-500 hover:text-red-700 transition">Delete</button>
-                        </li> */}
-
-                        {/* Add more tasks dynamically here */}
                         {todos.map((todo, index) => (
                             <li key={todo.id}
                                 className="flex items-center justify-between bg-gray-50 p-3 rounded-md"
@@ -156,28 +125,24 @@ const TodoList = () => {
                                     style={{ textDecoration: todo.completed ? 'line-through' : 'none', cursor: 'pointer' }}
                                     className='text-left'
                                 >
-                                    {index + 1}.  {todo.title}
+                                    {index + 1}. {todo.title}
                                 </span>
-                                <div className="flex gap-2 ml-2">
-                                    <button
-                                        onClick={() => startEdit(todo.id, todo.title)}
-                                        className="text-blue-500 hover:text-blue-700 text-sm cursor-pointer"
-                                    >
-                                        Edit
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(todo.id)}
-                                        className="text-red-500 hover:text-red-700 text-sm cursor-pointer"
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
+
+
+                                <button
+                                    onClick={() => handleDelete(todo.id)}
+                                    className="text-red-500 hover:text-red-700 text-sm cursor-pointer"
+                                >
+                                    <div title='Delete' className='flex items-center'>
+                                        <MdDeleteForever className='text-[24px] ' />
+                                        {/* <span>Delete</span> */}
+                                    </div>
+                                </button>
                             </li>
                         ))}
                     </ul>
                 </div>
             </div>
-
         </div>
     )
 }

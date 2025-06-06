@@ -57,21 +57,6 @@ npm run dev
 
 4. Open your browser and visit `http://localhost:5173` to view the app.
 
-## 🖥️ Usage
-
-- Sign up for an account or log in if you already have one.
-- Add your expenses using the form provided.
-- Edit or delete existing expenses as needed.
-- Log out when you're done.
-
-## Contribution
-
-Contributions are welcome! Please feel free to submit [pull requests](https://github.com/danielace1/expense-tracker-app/pulls) or [open issues](https://github.com/danielace1/expense-tracker-app/issues) for any bugs or feature requests.
-
 ## License
 
 This project is licensed under the [MIT](./LICENSE)
-
-## Author
-
-- [Sudharsan](https://instagram.com/sudharsan_daniel)
